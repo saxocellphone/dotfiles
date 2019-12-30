@@ -20,7 +20,7 @@ set hidden
 set laststatus=2
 set smarttab
 set showmatch
-set number
+set number nu rnu
 set shiftround
 set incsearch
 set completeopt-=preview
