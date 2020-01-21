@@ -1,6 +1,5 @@
 filetype plugin on
 call plug#begin('~/.vim/plugged')
-Plug 'valloric/youcompleteme'
 Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
