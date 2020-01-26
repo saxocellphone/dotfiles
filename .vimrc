@@ -14,9 +14,13 @@ Plug 'w0rp/ale'
 Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
+set background=dark
 set backspace=indent,eol,start
 set hidden
 set laststatus=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
 set smarttab
 set showmatch
 set number nu rnu
@@ -30,4 +34,5 @@ nmap <F6> :NERDTreeToggle<CR>
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+inoremap wj <Esc>
 let mapleader = ','
