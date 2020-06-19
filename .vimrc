@@ -14,7 +14,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tmsvg/pear-tree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'morhetz/gruvbox' 
 call plug#end()
+
+autocmd vimenter * colorscheme gruvbox
 
 set background=dark
 set backspace=indent,eol,start
@@ -78,8 +81,20 @@ let g:coc_global_extensions = [
 
 """ END COC settings
 
-let mapleader = ','
+let mapleader = ';'
 nmap <F6> :NERDTreeToggle<CR>
+
 inoremap wj <Esc>
-nnoremap <silent> <Leader>b :ls<cr>
+
 nnoremap <silent> <Leader>n :noh<cr>
+
+nnoremap <silent> <Leader>w <C-W>k
+nnoremap <silent> <Leader>s <C-W>j
+nnoremap <silent> <Leader>a <C-W>h
+nnoremap <silent> <Leader>d <C-W>l
+
+tnoremap <silent> <Esc> <C-\><C-n>
+
+nnoremap <silent> <Leader>b :ls<cr>
+map <silent> <Leader>j :bn<cr>
+map <silent> <Leader>k :bp<cr>
