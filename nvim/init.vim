@@ -15,6 +15,9 @@ Plug 'tmsvg/pear-tree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'morhetz/gruvbox' 
+Plug 'ap/vim-buftabline'
+Plug 'fatih/vim-go'
+Plug 'derekwyatt/vim-scala'
 call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
@@ -80,7 +83,7 @@ let g:coc_global_extensions = [
 
 
 """ END COC settings
-
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let mapleader = ';'
 nmap <F6> :NERDTreeToggle<CR>
 
@@ -92,9 +95,15 @@ nnoremap <silent> <Leader>w <C-W>k
 nnoremap <silent> <Leader>s <C-W>j
 nnoremap <silent> <Leader>a <C-W>h
 nnoremap <silent> <Leader>d <C-W>l
+nnoremap <silent> <S-Enter> O<Esc>
+nnoremap <silent> <CR> Do<Esc>p
 
 tnoremap <silent> <Esc> <C-\><C-n>
 
 nnoremap <silent> <Leader>b :ls<cr>
-map <silent> <Leader>j :bn<cr>
-map <silent> <Leader>k :bp<cr>
+map <silent> <Leader>j :bp<cr>
+map <silent> <Leader>k :bn<cr>
+
+if has('nvim')
+    autocmd TermOpen term://* startinsert
+endif
