@@ -22,6 +22,7 @@ call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
 
+set clipboard+=unnamedplus
 set background=dark
 set backspace=indent,eol,start
 set hidden
@@ -78,7 +79,8 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
-  \ 'coc-json' 
+  \ 'coc-json',
+  \ 'coc-python'
   \ ]
 
 
