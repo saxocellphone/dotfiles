@@ -1,4 +1,3 @@
-filetype plugin on
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'airblade/vim-gitgutter'
@@ -20,15 +19,21 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'derekwyatt/vim-scala'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/sonokai'
+Plug 'jlanzarotta/bufexplorer'
 "Plug 'morhetz/gruvbox' 
 "Plug 'dense-analysis/ale'
 "Plug 'itchyny/lightline.vim'
 "Plug 'ap/vim-buftabline'
 call plug#end()
+let mapleader = ';'
 
 autocmd vimenter * colorscheme sonokai
+autocmd vimenter * AirlineTheme simple
+let g:airline_extensions = []
 "autocmd vimenter * colorscheme gruvbox
-
+filetype plugin on
+filetype plugin indent on
+syntax on
 set clipboard+=unnamedplus
 set background=dark
 set backspace=indent,eol,start
@@ -44,7 +49,17 @@ set shiftround
 set incsearch
 set completeopt-=preview
 let g:pymode_python = 'python3'
-let mapleader = ';'
+vnoremap < <gv
+vnoremap > >gv
+
+nmap <leader>xx "_dd
+
+" Figure out the system Python for Neovim.
+"if exists("$VIRTUAL_ENV")
+    "let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+"else
+    "let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+"endif
 
 """ BEGIN COC settings
 set cmdheight=2
@@ -90,8 +105,10 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-pyright'
   \ ]
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 """ END COC settings
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
+let NERDTreeIgnore=['__pycache__']
 
 nmap <Leader>f :NERDTreeToggle<CR>
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
@@ -119,27 +136,3 @@ nnoremap qq :w\|BD<cr>
 if has('nvim')
     autocmd TermOpen term://* startinsert
 endif
-
-"VIM-AIRLINE Settings
-""set airline 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#fnametruncate = 16
-let g:airline#extensions#tabline#fnamecollapse = 2
-
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-
-let g:airline#extensions#tabline#ignore_bufadd_pat =
-  \ 'gundo|undotree|vimfiler|tagbar|nerd_tree|startify|!'
