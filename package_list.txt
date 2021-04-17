@@ -5,6 +5,7 @@ baobab
 base
 binutils
 bison
+cava
 cheese
 chromium
 cmake
