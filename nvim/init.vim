@@ -20,6 +20,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/sonokai'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'knubie/vim-kitty-navigator'
 "Plug 'morhetz/gruvbox' 
 "Plug 'dense-analysis/ale'
 "Plug 'itchyny/lightline.vim'
@@ -48,6 +49,8 @@ set number nu rnu
 set shiftround
 set incsearch
 set completeopt-=preview
+set title
+let &titlestring='%t - nvim'
 let g:pymode_python = 'python3'
 vnoremap < <gv
 vnoremap > >gv
