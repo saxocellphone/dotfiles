@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -21,6 +21,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/sonokai'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'knubie/vim-kitty-navigator'
+Plug 'mhinz/vim-signify'
+"Plug 'airblade/vim-gitgutter'
 "Plug 'morhetz/gruvbox' 
 "Plug 'dense-analysis/ale'
 "Plug 'itchyny/lightline.vim'
@@ -30,11 +32,15 @@ let mapleader = ';'
 
 autocmd vimenter * colorscheme sonokai
 autocmd vimenter * AirlineTheme simple
-let g:airline_extensions = []
+let g:airline_extensions = ["branch"]
 "autocmd vimenter * colorscheme gruvbox
 filetype plugin on
 filetype plugin indent on
 syntax on
+set foldmethod=indent
+:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+nnoremap <space> za
+vnoremap <space> zf
 set clipboard+=unnamedplus
 set background=dark
 set backspace=indent,eol,start
@@ -50,12 +56,15 @@ set shiftround
 set incsearch
 set completeopt-=preview
 set title
+set splitbelow
 let &titlestring='%t - nvim'
 let g:pymode_python = 'python3'
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <leader>xx "_dd
+nmap <leader>dd "_dd
+vmap <leader>d "_d
+nmap <leader>` :sp\|term<CR><ESC>:resize 10<CR>i
 
 " Figure out the system Python for Neovim.
 "if exists("$VIRTUAL_ENV")
