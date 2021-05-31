@@ -22,6 +22,8 @@ Plug 'sainnhe/sonokai'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'knubie/vim-kitty-navigator'
 Plug 'mhinz/vim-signify'
+Plug 'Yggdroot/indentLine'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 "Plug 'airblade/vim-gitgutter'
 "Plug 'morhetz/gruvbox' 
 "Plug 'dense-analysis/ale'
@@ -62,7 +64,7 @@ let g:pymode_python = 'python3'
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <leader>dd "_dd
+nmap <leader>xx "_dd
 vmap <leader>d "_d
 nmap <leader>` :sp\|term<CR><ESC>:resize 10<CR>i
 
@@ -131,10 +133,10 @@ inoremap wj <Esc>
 
 nnoremap <silent> <Leader>n :noh<cr>
 
-nnoremap <silent> <Leader>w <C-W>k
-nnoremap <silent> <Leader>s <C-W>j
-nnoremap <silent> <Leader>a <C-W>h
-nnoremap <silent> <Leader>d <C-W>l
+"nnoremap <silent> <Leader>w <C-W>k
+"nnoremap <silent> <Leader>s <C-W>j
+"nnoremap <silent> <Leader>a <C-W>h
+"nnoremap <silent> <Leader>d <C-W>l
 nnoremap <silent> <S-Enter> O<Esc>
 nnoremap <silent> <CR> Do<Esc>p
 
