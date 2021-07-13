@@ -17,6 +17,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'qpkorr/vim-bufkill'
 Plug 'derekwyatt/vim-scala'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/sonokai'
 Plug 'jlanzarotta/bufexplorer'
@@ -61,6 +62,8 @@ set title
 set splitbelow
 let &titlestring='%t - nvim'
 let g:pymode_python = 'python3'
+
+""" Remaps
 vnoremap < <gv
 vnoremap > >gv
 
@@ -68,12 +71,16 @@ nmap <leader>xx "_dd
 vmap <leader>d "_d
 nmap <leader>` :sp\|term<CR><ESC>:resize 10<CR>i
 
-" Figure out the system Python for Neovim.
-"if exists("$VIRTUAL_ENV")
-    "let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
-"else
-    "let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
-"endif
+
+inoremap wj <Esc>
+nnoremap <silent> <Leader>n :noh<cr>
+nnoremap <silent> <S-Enter> O<Esc>
+nnoremap <silent> <CR> Do<Esc>p
+tnoremap <silent> <Esc> <C-\><C-n>
+nnoremap <silent> <Leader>b :ls<cr>
+map <silent> <Leader>j :bp<cr>
+map <silent> <Leader>k :bn<cr>
+nnoremap qq :w\|BD<cr>
 
 """ BEGIN COC settings
 set cmdheight=2
@@ -120,32 +127,35 @@ let g:coc_global_extensions = [
   \ 'coc-pyright'
   \ ]
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-""" END COC settings
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-let NERDTreeIgnore=['__pycache__']
 
+
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+""" END COC settings
+
+""" C-p vim
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
+
+
+""" NERDTREE
+let NERDTreeIgnore=['__pycache__']
 nmap <Leader>f :NERDTreeToggle<CR>
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-inoremap wj <Esc>
-
-nnoremap <silent> <Leader>n :noh<cr>
-
-"nnoremap <silent> <Leader>w <C-W>k
-"nnoremap <silent> <Leader>s <C-W>j
-"nnoremap <silent> <Leader>a <C-W>h
-"nnoremap <silent> <Leader>d <C-W>l
-nnoremap <silent> <S-Enter> O<Esc>
-nnoremap <silent> <CR> Do<Esc>p
-
-tnoremap <silent> <Esc> <C-\><C-n>
-
-nnoremap <silent> <Leader>b :ls<cr>
-map <silent> <Leader>j :bp<cr>
-map <silent> <Leader>k :bn<cr>
-nnoremap qq :w\|BD<cr>
 
 if has('nvim')
     autocmd TermOpen term://* startinsert
