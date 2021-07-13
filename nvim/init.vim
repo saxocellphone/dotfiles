@@ -25,6 +25,7 @@ Plug 'knubie/vim-kitty-navigator'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'dkprice/vim-easygrep'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'morhetz/gruvbox' 
 "Plug 'dense-analysis/ale'
@@ -42,8 +43,6 @@ filetype plugin indent on
 syntax on
 set foldmethod=indent
 :autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-nnoremap <space> za
-vnoremap <space> zf
 set clipboard+=unnamedplus
 set background=dark
 set backspace=indent,eol,start
@@ -63,24 +62,44 @@ set splitbelow
 let &titlestring='%t - nvim'
 let g:pymode_python = 'python3'
 
+if has('nvim')
+    autocmd TermOpen term://* startinsert
+endif
+
 """ Remaps
+nmap <leader>o o<Esc>
+nnoremap <space> za
+vnoremap <space> zf
 vnoremap < <gv
 vnoremap > >gv
-
 nmap <leader>xx "_dd
 vmap <leader>d "_d
 nmap <leader>` :sp\|term<CR><ESC>:resize 10<CR>i
-
-
 inoremap wj <Esc>
 nnoremap <silent> <Leader>n :noh<cr>
-nnoremap <silent> <S-Enter> O<Esc>
 nnoremap <silent> <CR> Do<Esc>p
 tnoremap <silent> <Esc> <C-\><C-n>
 nnoremap <silent> <Leader>b :ls<cr>
 map <silent> <Leader>j :bp<cr>
 map <silent> <Leader>k :bn<cr>
 nnoremap qq :w\|BD<cr>
+
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist|build'
+
+""" Begin NerdTree settings
+let NERDTreeIgnore=['__pycache__', 'build']
+nmap <Leader>f :NERDTreeToggle<CR>
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+""" End NerdTree settings
 
 """ BEGIN COC settings
 set cmdheight=2
@@ -98,6 +117,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
 
 inoremap <silent><expr> <c-a> coc#refresh()
 
@@ -124,7 +145,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json',
-  \ 'coc-pyright'
+  \ 'coc-pyright',
   \ ]
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -145,18 +166,3 @@ function! s:show_documentation()
   endif
 endfunction
 """ END COC settings
-
-""" C-p vim
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-
-
-""" NERDTREE
-let NERDTreeIgnore=['__pycache__']
-nmap <Leader>f :NERDTreeToggle<CR>
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-if has('nvim')
-    autocmd TermOpen term://* startinsert
-endif

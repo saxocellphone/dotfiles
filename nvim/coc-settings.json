@@ -1,11 +1,10 @@
 {
     "tsserver.implicitProjectConfig.experimentalDecorators": true,
-    "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
     "diagnostic.enableSign": true,
     "diagnostic.enableHighlightLineNumber": true,
     "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
     "python.analysis.typeCheckingMode": "off",
+    "python.linting.mypyEnabled": false,
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
