@@ -23,6 +23,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'dkprice/vim-easygrep'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'joshdick/onedark.vim'
 " Language Specific Plugs
 Plug 'pantharshit00/vim-prisma'
 Plug 'derekwyatt/vim-scala'
@@ -58,6 +59,7 @@ set hlsearch
 set completeopt-=preview
 set title
 set splitbelow
+colorscheme onedark
 """ End Sets
 
 
@@ -108,6 +110,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 """ End NerdTree settings
 
 """ Other files
-runtime ~/.config/nvim/themes/pencil.vim
-runtime ~/.config/nvim/statusbar.vim
-runtime ~/.config/nvim/coc.vim
+for f in globpath('~/.config/nvim', '*.conf', 0, 1, 0)
+    execute 'source' f
+endfor
