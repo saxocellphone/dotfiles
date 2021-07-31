@@ -94,6 +94,7 @@ endif
 :autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist|build'
+let g:NERDDefaultAlign = 'left'
 """ End Misc
 
 """ Begin NerdTree settings
