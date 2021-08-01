@@ -1,33 +1,34 @@
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-fugitive'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'knubie/vim-kitty-navigator'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tmsvg/pear-tree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fatih/vim-go'
-Plug 'qpkorr/vim-bufkill'
-Plug 'sheerun/vim-polyglot'
-Plug 'sainnhe/sonokai'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'knubie/vim-kitty-navigator'
-Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
-Plug 'dkprice/vim-easygrep'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'qpkorr/vim-bufkill'
+Plug 'dkprice/vim-easygrep'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+" Theme plugs
+Plug 'sainnhe/sonokai'
 Plug 'joshdick/onedark.vim'
 " Language Specific Plugs
+Plug 'fatih/vim-go'
 Plug 'pantharshit00/vim-prisma'
 Plug 'derekwyatt/vim-scala'
 Plug 'neovimhaskell/haskell-vim'
+" Plug not in use
+"Plug 'mattn/emmet-vim'
+
 " Previous Plugs
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
@@ -36,6 +37,7 @@ Plug 'neovimhaskell/haskell-vim'
 "Plug 'dense-analysis/ale'
 "Plug 'itchyny/lightline.vim'
 "Plug 'ap/vim-buftabline'
+"Plug 'tpope/vim-eunuch'
 call plug#end()
 
 """ Sets
@@ -111,6 +113,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 """ End NerdTree settings
 
 """ Other files
-for f in globpath('~/.config/nvim', '*.conf', 0, 1, 0)
+set wig=init.vim
+for f in globpath('~/.config/nvim', '*.vim', 0, 1, 0)
     execute 'source' f
 endfor
