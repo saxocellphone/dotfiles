@@ -1,4 +1,3 @@
-electron7 7.1.14-7
 st 0.8.3-1
 update-grub 0.0.1-7
 xorg-font-utils 7.6-6

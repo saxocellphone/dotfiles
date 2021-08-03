@@ -5,6 +5,7 @@
     "python.linting.flake8Enabled": true,
     "python.analysis.typeCheckingMode": "off",
     "python.linting.mypyEnabled": false,
+    "prisma.prismaFmtBinPath": "",
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
