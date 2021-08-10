@@ -1,7 +1,6 @@
 [user]
-	email = vnazzaro@cisco.com
-	name = vnazzaro
-	signingkey = E01C46BA13B5767EA246B6715D8BB343B83BC712
+	email = nazzav923@gmail.com
+	name = Victor Nazzaro
 [core]
 	editor = nvim
 [pager]
