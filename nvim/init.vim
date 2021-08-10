@@ -9,19 +9,14 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'Yggdroot/indentLine'
-Plug 'mhinz/vim-signify'
+" Plugs for git
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-surround'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'qpkorr/vim-bufkill'
-Plug 'dkprice/vim-easygrep'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+" Plugs for Testing
 Plug 'vim-test/vim-test'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-coverage'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mhinz/vim-signify'
 " Theme plugs
 Plug 'sainnhe/sonokai'
 Plug 'joshdick/onedark.vim'
@@ -30,6 +25,17 @@ Plug 'fatih/vim-go'
 Plug 'pantharshit00/vim-prisma'
 Plug 'derekwyatt/vim-scala'
 Plug 'neovimhaskell/haskell-vim'
+" Chopping Block
+Plug 'qpkorr/vim-bufkill'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'editorconfig/editorconfig-vim'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'dkprice/vim-easygrep'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
+Plug 'brooth/far.vim'
+
+
 " Plug not in use
 "Plug 'mattn/emmet-vim'
 
@@ -65,6 +71,7 @@ set hlsearch
 set completeopt-=preview
 set title
 set splitbelow
+set wildignore+=node_modules/**
 colorscheme onedark
 """ End Sets
 
@@ -108,7 +115,8 @@ let test#python#runner = 'pytest'
 
 """ Begin NerdTree settings
 let NERDTreeIgnore=['__pycache__', 'build']
-nmap <Leader>f :NERDTreeToggle<CR>
+nnoremap <Leader>F :NERDTreeFind<CR>
+nnoremap <Leader>f :NERDTreeToggle<CR>
 " Start NERDTree and leave the cursor in it.
 "autocmd VimEnter * NERDTree
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
