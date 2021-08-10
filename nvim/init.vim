@@ -18,6 +18,10 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'dkprice/vim-easygrep'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'vim-test/vim-test'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-coverage'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Theme plugs
 Plug 'sainnhe/sonokai'
 Plug 'joshdick/onedark.vim'
@@ -75,6 +79,7 @@ nmap <leader>xx "_dd
 vmap <leader>d "_d
 nmap <leader>` :sp\|term<CR><ESC>:resize 10<CR>i
 inoremap wj <Esc>
+nnoremap <C-s> :w<cr>
 nnoremap <silent> <Leader>n :noh<cr>
 nnoremap <silent> <CR> o<Esc>
 tnoremap <silent> <Esc> <C-\><C-n>
@@ -97,13 +102,15 @@ endif
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist|build'
 let g:NERDDefaultAlign = 'left'
+
+let test#python#runner = 'pytest'
 """ End Misc
 
 """ Begin NerdTree settings
 let NERDTreeIgnore=['__pycache__', 'build']
 nmap <Leader>f :NERDTreeToggle<CR>
 " Start NERDTree and leave the cursor in it.
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
