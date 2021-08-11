@@ -9,6 +9,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'Yggdroot/indentLine'
+Plug 'brooth/far.vim'
 " Plugs for git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
@@ -33,7 +34,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'dkprice/vim-easygrep'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'brooth/far.vim'
+Plug 'akinsho/nvim-toggleterm.lua'
 
 
 " Plug not in use
@@ -105,7 +106,7 @@ if has('nvim')
     autocmd TermOpen term://* startinsert
 endif
 
-:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist|build'
 let g:NERDDefaultAlign = 'left'
