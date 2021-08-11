@@ -44,4 +44,4 @@ bo.expandtab = true
 cmd 'colorscheme onedark'
 utils.create_augroup({
   {'BufWinEnter', '*', [[let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))]]}
-}, 'Tab2')
+}, 'Auto Unfold')
