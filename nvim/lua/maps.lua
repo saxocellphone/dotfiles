@@ -29,3 +29,9 @@ utils.map('v', '<space>', 'zf')
 
 -- Insert mode stuff
 utils.map('i', 'wj', '<Esc>')
+
+-- Indent
+utils.map('n', '<', '<<')
+utils.map('n', '>', '>>')
+utils.map('v', '<', '<gv')
+utils.map('v', '>', '>gv')

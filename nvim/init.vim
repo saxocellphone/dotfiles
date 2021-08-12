@@ -1,5 +1,5 @@
 set nocompatible
 
-source $HOME/.config/nvim/test.vim
+source ~/.config/nvim/coc.vim
 
 luafile ~/.config/nvim/lua/init.lua

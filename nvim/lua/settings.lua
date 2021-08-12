@@ -28,13 +28,15 @@ o.splitright = true
 o.title = true
 o.termguicolors = true
 o.syntax = [[on]]
+o.shell='/usr/local/bin/fish'
 
 
 -- window-local options
 wo.number = true
 wo.cursorline = true
 wo.relativenumber = true
---wo.foldmethod = indent
+--wo.foldmethod = [[expr]]
+--wo.foldexpr= [[nvim_treesitter#foldexpr()]]
 --wo.wrap = false
 
 -- buffer-local options

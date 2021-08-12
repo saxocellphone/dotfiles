@@ -25,7 +25,7 @@ require("toggleterm").setup{
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
     border = 'curved',
-    width = vim.o.columns * 0.8,
+    width = math.floor(vim.o.columns * 0.8),
     height = 40,
     winblend = 3,
     highlights = {
