@@ -11,8 +11,6 @@ o.dir = '/tmp'
 o.smartcase = true
 o.smarttab = true
 o.laststatus = 2
-o.tabstop = 4
-o.shiftwidth = 4
 o.clipboard = [[unnamed,unnamedplus]]
 o.shiftround = true
 o.expandtab = true
@@ -41,9 +39,9 @@ wo.relativenumber = true
 
 -- buffer-local options
 bo.expandtab = true
+bo.tabstop = 4
+bo.softtabstop = 4
+bo.shiftwidth = 4
 
 -- others
 cmd 'colorscheme onedark'
-utils.create_augroup({
-  {'BufWinEnter', '*', [[let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))]]}
-}, 'Auto Unfold')

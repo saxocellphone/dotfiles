@@ -39,8 +39,10 @@ require "paq" {
 
 
     -- Others
-    --"yamatsum/nvim-cursorline";
+    "yamatsum/nvim-cursorline";
     "npxbr/glow.nvim"; -- Markdown
+
+
     -- Debugging
     --"mfussenegger/nvim-dap";
     --"rcarriga/nvim-dap-ui";

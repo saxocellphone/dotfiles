@@ -43,5 +43,3 @@ function _lazygit_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>`", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
-
-vim.api.nvim_command('au BufWinEnter toggleterm setl statusline=')
