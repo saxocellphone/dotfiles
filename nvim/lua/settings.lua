@@ -33,8 +33,8 @@ o.shell='/usr/local/bin/fish'
 
 -- window-local options
 wo.number = true
-wo.cursorline = true
 wo.relativenumber = true
+--wo.cursorline = true
 --wo.foldmethod = [[expr]]
 --wo.foldexpr= [[nvim_treesitter#foldexpr()]]
 --wo.wrap = false

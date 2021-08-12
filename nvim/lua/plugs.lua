@@ -22,7 +22,7 @@ require "paq" {
     "windwp/windline.nvim";
     
     -- Themes
-    "sainnhe/sonokai";
+    --"sainnhe/sonokai";
     "joshdick/onedark.vim";
 
     -- Utils
@@ -37,9 +37,13 @@ require "paq" {
     "google/vim-maktaba";
     "google/vim-coverage";
 
+
+    -- Others
+    --"yamatsum/nvim-cursorline";
+    "npxbr/glow.nvim"; -- Markdown
     -- Debugging
-    "mfussenegger/nvim-dap";
-    "rcarriga/nvim-dap-ui";
+    --"mfussenegger/nvim-dap";
+    --"rcarriga/nvim-dap-ui";
 
 
     -- Doesn't work, might write one for lua
