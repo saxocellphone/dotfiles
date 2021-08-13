@@ -4,6 +4,7 @@ local bo = vim.bo
 
 local cmd = vim.cmd
 local utils = require('utils')
+local globals = require('globals')
 
 -- global options
 o.swapfile = true
@@ -26,8 +27,9 @@ o.splitright = true
 o.title = true
 o.termguicolors = true
 o.syntax = [[on]]
-o.shell='/usr/local/bin/fish'
-
+if globals.is_mac then
+    o.shell='/usr/local/bin/fish'
+end
 
 -- window-local options
 wo.number = true
