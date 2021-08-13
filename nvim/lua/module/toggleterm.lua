@@ -37,9 +37,19 @@ require("toggleterm").setup{
 
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+local glow = Terminal:new({ cmd = "glow", hidden = true, direction = "float" })
 
 function _lazygit_toggle()
   lazygit:toggle()
 end
 
+function _glow_toggle()
+  glow:toggle()
+end
+
 vim.api.nvim_set_keymap("n", "<leader>`", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+local result = vim.api.nvim_exec(
+[[
+command! Glow lua _glow_toggle()<CR>
+]], true)
