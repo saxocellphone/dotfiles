@@ -6,8 +6,8 @@ map('n', ';', '', {})
 vim.g.mapleader = ';'  -- 'vim.g' sets global variables
 
 -- Normal
-noremap = { noremap = true }
-silent = { silent = true }
+--local noremap = { noremap = true }
+local silent = { silent = true }
 utils.map('n', '<leader>n', ':nohlsearch<cr>')
 utils.map('n', '<leader>k', ':bnext<cr>')
 utils.map('n', '<leader>j', ':bprev<cr>')
@@ -18,7 +18,7 @@ utils.map('n', '<C-l>', '<C-w>l')
 utils.map('n', '<C-h>', '<C-W>h<C-W>_')
 
 utils.map('n', '<cr>', 'o<esc>', silent)
-utils.map('n', 'qq', ':w|BD<cr>', silent)
+utils.map('n', 'qq', ':w|bd<cr>', silent)
 
 utils.map('n', '<C-s>', ':w<cr>')
 
