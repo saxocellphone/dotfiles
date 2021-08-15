@@ -2,11 +2,6 @@ vim.cmd 'packadd paq-nvim'
 require "paq" {
     "savq/paq-nvim";                  -- Let Paq manage itself
 
-    -- Coc related
-    {"neoclide/coc.nvim", branch= "release"};
-    "honza/vim-snippets";
-    "sheerun/vim-polyglot";
-
     -- Git
     "lewis6991/gitsigns.nvim";
 
@@ -17,8 +12,6 @@ require "paq" {
     {"ray-x/guihua.lua", run="cd lua/fzy && make"};
     {"junegunn/fzf", run="fzf#install()"};
     "junegunn/fzf.vim";
-
-    -- Status Line
 
     -- Appearance
     "joshdick/onedark.vim";
@@ -32,8 +25,8 @@ require "paq" {
     "kyazdani42/nvim-web-devicons";
     "scrooloose/nerdcommenter";
     "qpkorr/vim-bufkill";
-    "SirVer/ultisnips";
     "rafcamlet/nvim-luapad";
+    {"prettier/vim-prettier", run="npm install"};
 
     -- Testing
     "vim-test/vim-test";
@@ -41,22 +34,43 @@ require "paq" {
     "google/vim-coverage";
     {"michaelb/sniprun", run="bass bash install.sh"};  --Code runner
 
-    -- Others
+    -- TreeSitter
+    {"nvim-treesitter/nvim-treesitter", run=":TSUpdate"};
+    "nvim-treesitter/playground";
+
+    -- LSP
+    "glepnir/lspsaga.nvim";
+    "neovim/nvim-lspconfig";
+    "hrsh7th/nvim-compe";
+    "glepnir/lspsaga.nvim";
+    "ray-x/lsp_signature.nvim";
+
+    -- Snippets
+    "rafamadriz/friendly-snippets";
+    "hrsh7th/vim-vsnip";
+    "hrsh7th/vim-vsnip-integ";
 
     -- Debugging
-    --"mfussenegger/nvim-dap";
-    --"rcarriga/nvim-dap-ui";
+    "puremourning/vimspector";
+    "szw/vim-maximizer";
 
+
+    -- Too slow
+    --"ray-x/navigator.lua";
 
     -- Doesn't work, might write one for lua
     -- "knubie/vim-kitty-navigator";
 
     -- Maybe One day I'll use 
     --"nvim-telescope/telescope-frecency.nvim";
-    --"ray-x/navigator.lua";
-    --{"nvim-treesitter/nvim-treesitter", run=":TSUpdate"};
-    --"tami5/sql.nvim";
-    --"neovim/nvim-lspconfig";          -- Mind the semi-colons
-    --"hrsh7th/nvim-compe";
     --"Xuyuanp/scrollbar.nvim";
+    --"tami5/sql.nvim";
+    --"symbols-outline.nvim";
+    --"mfussenegger/nvim-dap";
+    --"rcarriga/nvim-dap-ui";
+    --
+    -- Coc related
+    --{"neoclide/coc.nvim", branch= "release"};
+    --"honza/vim-snippets";
+    --"sheerun/vim-polyglot";
 }

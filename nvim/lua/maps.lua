@@ -18,7 +18,7 @@ utils.map('n', '<C-l>', '<C-w>l')
 utils.map('n', '<C-h>', '<C-W>h<C-W>_')
 
 utils.map('n', '<cr>', 'o<esc>', silent)
-utils.map('n', 'qq', ':w|bd<cr>', silent)
+utils.map('n', 'zz', ':w|bd<cr>', silent)
 
 utils.map('n', '<C-s>', ':w<cr>')
 

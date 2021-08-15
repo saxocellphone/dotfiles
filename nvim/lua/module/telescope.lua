@@ -7,6 +7,10 @@ require("telescope").setup {
       sort_lastused = true,
       theme = "dropdown",
       previewer = false,
+      path_display = {
+        'shorten',
+        'absolute'
+      },
       mappings = {
         i = {
           ["<c-d>"] = require("telescope.actions").delete_buffer,
