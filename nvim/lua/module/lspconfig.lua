@@ -1,4 +1,5 @@
 local nvim_lsp = require("lspconfig")
+local globals = require("globals")
 local format_async = function(err, _, result, _, bufnr)
   if err ~= nil or result == nil then return end
   if not vim.api.nvim_buf_get_option(bufnr, "modified") then
@@ -19,6 +20,7 @@ _G.lsp_organize_imports = function()
   }
   vim.lsp.buf.execute_command(params)
 end
+
 local on_attach = function(client, bufnr)
   local buf_map = vim.api.nvim_buf_set_keymap
   vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -47,7 +49,7 @@ end
 
 local filetypes = {
   typescript = "eslint",
-  typescriptreact = "eslint",
+  typescriptreact = "eslint"
 }
 local linters = {
   eslint = {
@@ -102,3 +104,45 @@ nvim_lsp.rust_analyzer.setup({
 nvim_lsp.pyright.setup({
   on_attach = on_attach
 })
+
+-- Below are for Lua lsp
+local USER = vim.fn.expand('$USER')
+local sumneko_root_path = ""
+local sumneko_binary = ""
+if globals.is_mac then
+  sumneko_root_path = "/Users/" .. USER .. "/lua-language-server"
+  sumneko_binary = sumneko_root_path .. "/bin/MacOS/lua-language-server"
+elseif globals.is_linux then
+  sumneko_root_path = "/home/" .. USER .. "/lua-language-server"
+  sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+else
+  print("Unsupported system for sumneko")
+end
+
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+nvim_lsp.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = vim.split(package.path, ';')
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'}
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+            }
+        }
+    }
+}

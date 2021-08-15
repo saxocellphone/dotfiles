@@ -44,6 +44,7 @@ require "paq" {
     "hrsh7th/nvim-compe";
     "glepnir/lspsaga.nvim";
     "ray-x/lsp_signature.nvim";
+    "mfussenegger/nvim-lint";
 
     -- Snippets
     "rafamadriz/friendly-snippets";
