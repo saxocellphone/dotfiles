@@ -43,7 +43,7 @@ require("telescope").setup {
   }
 }
 
-vim.api.nvim_set_keymap('n', '<C-b>', ':Telescope buffers<cr>', {
+vim.api.nvim_set_keymap('n', '<C-e>', ':Telescope buffers<cr>', {
 	noremap = true,
 	silent = true
 })

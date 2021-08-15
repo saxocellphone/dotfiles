@@ -37,6 +37,15 @@ local on_attach = function(client, bufnr)
   vim.cmd("command! LspDiagLine lua vim.lsp.diagnostic.show_line_diagnostics()")
   vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
   buf_map(bufnr, "n", "gd", ":LspDef<CR>", {silent = true})
+  buf_map(bufnr, "n", "go", ":LspOrganize<CR>", {silent = true})
+  buf_map(bufnr, "n", "K", ":LspHover<CR>", {silent = true})
+  buf_map(bufnr, "n", "[g", ":LspDiagPrev<CR>", {silent = true})
+  buf_map(bufnr, "n", "]g", ":LspDiagNext<CR>", {silent = true})
+  -- Handled by LSPSaga
+  --buf_map(bufnr, "n", "gr", ":LspRename<CR>", {silent = true})
+  --buf_map(bufnr, "n", "gi", ":LspImplementation<CR>", {silent = true})
+  --buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>", {silent = true})
+  --buf_map(bufnr, "n", "gf", ":LspRefs<CR>", {silent = true})
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_exec([[
       augroup LspAutocommands
@@ -49,7 +58,7 @@ end
 
 local filetypes = {
   typescript = "eslint",
-  typescriptreact = "eslint"
+  typescriptreact = "eslint",
 }
 local linters = {
   eslint = {
