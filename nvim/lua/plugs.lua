@@ -7,6 +7,9 @@ require "paq" {
 
     -- File/Grep finder stuff
     "nvim-telescope/telescope.nvim";
+    "nvim-telescope/telescope-frecency.nvim";
+    "nvim-telescope/telescope-smart-history.nvim";
+    "tami5/sql.nvim";
     "nvim-lua/popup.nvim";
     "nvim-lua/plenary.nvim";
     {"ray-x/guihua.lua", run="cd lua/fzy && make"};
@@ -63,9 +66,7 @@ require "paq" {
     -- "knubie/vim-kitty-navigator";
 
     -- Maybe One day I'll use 
-    --"nvim-telescope/telescope-frecency.nvim";
     --"Xuyuanp/scrollbar.nvim";
-    --"tami5/sql.nvim";
     --"symbols-outline.nvim";
     --"mfussenegger/nvim-dap";
     --"rcarriga/nvim-dap-ui";
