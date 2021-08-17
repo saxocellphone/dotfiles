@@ -12,14 +12,14 @@ local format_async = function(err, _, result, _, bufnr)
   end
 end
 vim.lsp.handlers["textDocument/formatting"] = format_async
-_G.lsp_organize_imports = function()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
-end
+--_G.lsp_organize_imports = function()
+  --local params = {
+    --command = "_typescript.organizeImports",
+    --arguments = {vim.api.nvim_buf_get_name(0)},
+    --title = ""
+  --}
+  --vim.lsp.buf.execute_command(params)
+--end
 
 local on_attach = function(client, bufnr)
   local buf_map = vim.api.nvim_buf_set_keymap
@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
   vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
   vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
-  vim.cmd("command! LspOrganize lua lsp_organize_imports()")
+  --vim.cmd("command! LspOrganize lua lsp_organize_imports()")
   vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
   vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
   vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
@@ -59,6 +59,7 @@ end
 local filetypes = {
   typescript = "eslint",
   typescriptreact = "eslint",
+  python = "flake8",
 }
 local linters = {
   eslint = {
@@ -77,7 +78,13 @@ local linters = {
       security = "severity"
     },
     securities = {[2] = "error", [1] = "warning"}
-  }
+  },
+  flake8 = {
+    sourceName = "flake8",
+    command = "flake8",
+    rootPatterns = {"setup.py"},
+    debounce = 100,
+  },
 }
 local formatters = {
   prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
