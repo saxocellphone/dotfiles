@@ -1,6 +1,6 @@
 require('plugs')
-require('settings')    -- lua/settings.lua
-require('maps')        -- lua/maps.lua
+require('settings')
+require('maps')
 
 require('module.telescope')
 require('module.nvim-tree')
@@ -13,4 +13,3 @@ require('module.lspconfig')
 require('module.lspsaga')
 require('module.treesitter')
 require('module.lsp-signature')
-require('module.nvim-lint')

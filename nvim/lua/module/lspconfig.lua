@@ -82,10 +82,31 @@ local linters = {
   flake8 = {
     sourceName = "flake8",
     command = "flake8",
-    rootPatterns = {"setup.py"},
     debounce = 100,
+    rootPatterns = {"setup.py"},
+    args = {
+      "--format",
+      "%(row)d:%(col)d:%(code)s:%(code)s: %(text)s",
+      "%file",
+    },
+    formatPattern = {
+      "^(\\d+):(\\d+):(\\w+):(\\w).+: (.*)$",
+      {
+          line = 1,
+          column = 2,
+          message = {"[", 3, "] ", 5},
+          security = 4
+      }
+    },
+    securities = {
+      E = "error",
+      W = "warning",
+      F = "info",
+      B = "hint",
+    },
   },
 }
+
 local formatters = {
   prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
 }

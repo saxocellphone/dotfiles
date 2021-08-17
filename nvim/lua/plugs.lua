@@ -47,7 +47,6 @@ require "paq" {
     "hrsh7th/nvim-compe";
     "glepnir/lspsaga.nvim";
     "ray-x/lsp_signature.nvim";
-    "mfussenegger/nvim-lint";
 
     -- Snippets
     "rafamadriz/friendly-snippets";
@@ -58,20 +57,22 @@ require "paq" {
     "puremourning/vimspector";
     "szw/vim-maximizer";
 
-
     -- Too slow
     --"ray-x/navigator.lua";
 
     -- Doesn't work, might write one for lua
     -- "knubie/vim-kitty-navigator";
+    
+    -- Don't need it since diagnosticls handles it
+    --"mfussenegger/nvim-lint";
 
     -- Maybe One day I'll use 
     --"Xuyuanp/scrollbar.nvim";
     --"symbols-outline.nvim";
     --"mfussenegger/nvim-dap";
     --"rcarriga/nvim-dap-ui";
-    --
-    -- Coc related
+
+    -- Coc related, incase I want to go back
     --{"neoclide/coc.nvim", branch= "release"};
     --"honza/vim-snippets";
     --"sheerun/vim-polyglot";
