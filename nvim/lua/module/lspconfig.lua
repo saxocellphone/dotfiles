@@ -50,7 +50,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_exec([[
       augroup LspAutocommands
           autocmd! * <buffer>
-          autocmd BufWritePost <buffer> LspFormatting
+          autocmd BufWritePost <buffer> :lua vim.lsp.buf.formatting_sync()
       augroup END
       ]], true)
   end
@@ -142,6 +142,12 @@ nvim_lsp.pyright.setup({
   on_attach = on_attach
 })
 
+--nvim_lsp.clangd.setup({
+  --on_attach = on_attach
+--})
+nvim_lsp.ccls.setup {
+  on_attach = on_attach
+}
 -- Below are for Lua lsp
 local USER = vim.fn.expand('$USER')
 local sumneko_root_path = ""
