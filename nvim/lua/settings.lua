@@ -49,3 +49,4 @@ bo.autoindent = true
 
 -- others
 cmd 'colorscheme onedark'
+cmd "let g:NERDDefaultAlign = 'left'"
