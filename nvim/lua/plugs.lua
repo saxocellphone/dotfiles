@@ -53,15 +53,16 @@ require "paq" {
     "hrsh7th/vim-vsnip";
     "hrsh7th/vim-vsnip-integ";
 
+    -- Navigator for tmux
+		"christoomey/vim-tmux-navigator"
+
     -- Debugging
-    "puremourning/vimspector";
-    "szw/vim-maximizer";
+    --"puremourning/vimspector";
+    --"szw/vim-maximizer";
 
     -- Too slow
     --"ray-x/navigator.lua";
 
-    -- Doesn't work, might write one for lua
-    -- "knubie/vim-kitty-navigator";
     
     -- Don't need it since diagnosticls handles it
     --"mfussenegger/nvim-lint";
