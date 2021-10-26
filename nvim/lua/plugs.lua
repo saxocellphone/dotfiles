@@ -38,7 +38,7 @@ require "paq" {
     {"michaelb/sniprun", run="bass bash install.sh"};  --Code runner
 
     -- TreeSitter
-    {"nvim-treesitter/nvim-treesitter", run=":TSUpdate"};
+		{"nvim-treesitter/nvim-treesitter", run=":TSUpdate", branch="0.5-compat"};
     "nvim-treesitter/playground";
 
     -- LSP

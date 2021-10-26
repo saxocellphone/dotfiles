@@ -49,3 +49,32 @@ utils.map('i', '<c-j>', '<esc>:m .+1<cr>==i')
 utils.map('i', '<c-k>', '<esc>:m .-2<cr>==i')
 utils.map('v', 'J', ":m '>+1<cr>gv=gv")
 utils.map('v', 'K', ":m '<-2<cr>gv=gv")
+
+-- Quickfix list, ty the_primeagen!
+vim.cmd([[
+let g:the_primeagen_qf_l = 0
+let g:the_primeagen_qf_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:the_primeagen_qf_g == 1
+            let g:the_primeagen_qf_g = 0
+            cclose
+        else
+            let g:the_primeagen_qf_g = 1
+            copen
+        end
+    else
+        if g:the_primeagen_qf_l == 1
+            let g:the_primeagen_qf_l = 0
+            lclose
+        else
+            let g:the_primeagen_qf_l = 1
+            lopen
+        end
+    endif
+endfun]], false)
+utils.map('n', '<c-q>', ':call ToggleQFList(1)<CR>')
+utils.map('n', '<leader>q', ':call ToggleQFList(0)<CR>')
+utils.map('n', '<c-]>', ':cnext<cr>zz')
+utils.map('n', '<c-[>', ':cprevious<cr>zz')
