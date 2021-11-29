@@ -43,8 +43,8 @@ utils.map('v', '<', '<gv')
 utils.map('v', '>', '>gv')
 
 -- Moving code
-utils.map('n', '<leader>j', ':m .+1<cr>==')
-utils.map('n', '<leader>k', ':m .-2<cr>==')
+--utils.map('n', '<leader>j', ':m .+1<cr>==')
+--utils.map('n', '<leader>k', ':m .-2<cr>==')
 utils.map('i', '<c-j>', '<esc>:m .+1<cr>==i')
 utils.map('i', '<c-k>', '<esc>:m .-2<cr>==i')
 utils.map('v', 'J', ":m '>+1<cr>gv=gv")

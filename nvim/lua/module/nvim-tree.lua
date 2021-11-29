@@ -18,7 +18,15 @@ require'nvim-tree'.setup {
   update_focused_file = {
     enable      = true,
     update_cwd  = false,
-    ignore_list = {}
+    ignore_list = {
+			'.git',
+			'node_modules',
+			'.cache',
+			'.direnv',
+			'.mypy_cache',
+			'.pytest_cache'
+
+		}
   },
   system_open = {
     cmd  = nil,
@@ -46,12 +54,3 @@ vim.api.nvim_set_keymap('n', '<leader>F', ':NvimTreeFindFile<cr>', {
 	noremap = true,
 	silent = true
 })
-
-vim.g.nvim_tree_ignore = {
-	'.git',
-	'node_modules',
-	'.cache',
-	'.direnv',
-	'.mypy_cache',
-	'.pytest_cache'
-}

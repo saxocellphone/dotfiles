@@ -1,0 +1,7 @@
+--[[require('bqf').setup {]]
+	--[[auto_enable = true,]]
+	--[[auto_resize_height = true,]]
+	--[[preview = {auto_preview = true},]]
+	--[[func_map = {split = '<C-s>'},]]
+	--[[filter = {fzf = {action_for = {['ctrl-s'] = 'split'}}}]]
+--[[}]]

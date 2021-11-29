@@ -14,27 +14,10 @@ end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-		virtual_text = {
-			spacing = 4,
-			prefix = '~',
-		},
-		virtual_text=false,
-    -- Use a function to dynamically turn signs off
-    -- and on, using buffer local variables
-    --signs = function(bufnr, client_id)
-    --  local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
-    --  -- No buffer local variable set, so just enable by default
-    --  if not ok then
-    --    return true
-    --  end
-
-    --  return result
-    --end,
+		underline = true,
 		signs=true,
-    -- Disable a feature
     update_in_insert = false,
+    severity_sort = { reverse = true }
   }
 )
 
@@ -74,14 +57,14 @@ local on_attach = function(client, bufnr)
   --buf_map(bufnr, "n", "gi", ":LspImplementation<CR>", {silent = true})
   --buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>", {silent = true})
   --buf_map(bufnr, "n", "gf", ":LspRefs<CR>", {silent = true})
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_exec([[
-      augroup LspAutocommands
-          autocmd! * <buffer>
-          autocmd BufWritePost <buffer> :lua vim.lsp.buf.formatting_sync()
-      augroup END
-      ]], true)
-  end
+  --if client.resolved_capabilities.document_formatting then
+  --  vim.api.nvim_exec([[
+  --    augroup LspAutocommands
+  --        autocmd! * <buffer>
+  --        autocmd BufWritePost <buffer> :lua vim.lsp.buf.formatting_sync()
+  --    augroup END
+  --    ]], true)
+  --end
 end
 
 local filetypes = {
@@ -170,33 +153,16 @@ nvim_lsp.pyright.setup({
   on_attach = on_attach
 })
 
---nvim_lsp.clangd.setup({
-  --on_attach = on_attach
---})
 nvim_lsp.ccls.setup {
   on_attach = on_attach
 }
 -- Below are for Lua lsp
-local USER = vim.fn.expand('$USER')
-local sumneko_root_path = ""
-local sumneko_binary = ""
-if globals.is_mac then
-  sumneko_root_path = "/Users/" .. USER .. "/lua-language-server"
-  sumneko_binary = sumneko_root_path .. "/bin/MacOS/lua-language-server"
-elseif globals.is_linux then
-  sumneko_root_path = "/home/" .. USER .. "/lua-language-server"
-  sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
-else
-  print("Unsupported system for sumneko")
-end
-
-
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 nvim_lsp.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+		cmd = {"lua-language-server"},
     on_attach = on_attach,
     settings = {
         Lua = {
@@ -211,9 +177,11 @@ nvim_lsp.sumneko_lua.setup {
                 globals = {'vim'}
             },
             workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
-            }
+								library = vim.api.nvim_get_runtime_file("", true),
+            },
+						telemetry = {
+							enable = false,
+						}
         }
     }
 }

@@ -1,5 +1,8 @@
 vim.cmd 'packadd packer.nvim'
 return require("packer").startup(function()
+		local function conf(name)
+				return ([[require('plugconfigs.config').%s()]]):format(name)
+		end
     -- Let packer manage itself
     use 'wbthomason/packer.nvim'
 
@@ -16,6 +19,7 @@ return require("packer").startup(function()
     use {"ray-x/guihua.lua", run="cd lua/fzy && make"}
     use {"junegunn/fzf", run="fzf#install()"}
     use "junegunn/fzf.vim"
+		use {'kevinhwang91/nvim-bqf', ft = 'qf'}
 
     -- Appearance
     use "joshdick/onedark.vim"
@@ -31,6 +35,14 @@ return require("packer").startup(function()
     use "qpkorr/vim-bufkill"
     use "rafcamlet/nvim-luapad"
     use {"prettier/vim-prettier", run="npm install"}
+		use {
+				-- For search location
+				'kevinhwang91/nvim-hlslens',
+				keys = {'n', 'N', '/', '?', '*', '#', 'g*', 'g#'},
+				config = conf('hlslens'),
+				requires = {{'haya14busa/vim-asterisk'}}
+		}
+		use {'kevinhwang91/rnvimr', config = conf('rnvimr'), opt = false} -- Ranger explorer
 
     -- Testing
     use "vim-test/vim-test"
