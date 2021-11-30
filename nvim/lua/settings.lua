@@ -37,8 +37,8 @@ wo.number = true
 wo.relativenumber = true
 wo.linebreak = true
 --wo.cursorline = true
-wo.foldmethod = [[expr]]
-wo.foldexpr= [[nvim_treesitter#foldexpr()]]
+--wo.foldmethod = [[expr]]
+--wo.foldexpr= [[nvim_treesitter#foldexpr()]]
 vim.api.nvim_exec([[
 	au BufRead * normal zR
 ]], true)

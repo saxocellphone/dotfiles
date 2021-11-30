@@ -5,6 +5,8 @@ require('lspsaga').init_lsp_saga {
 }
 
 vim.cmd [[
+  nnoremap <silent>K  :Lspsaga hover_doc<CR>
+  nnoremap <silent>H  :Lspsaga show_line_diagnostics<CR>
   nnoremap <silent>gi :Lspsaga preview_definition<CR>
   nnoremap <silent>gf :Lspsaga lsp_finder<CR>
   nnoremap <silent>ga :Lspsaga code_action<CR>
