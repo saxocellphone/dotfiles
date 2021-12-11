@@ -44,6 +44,8 @@ return require("packer").startup(function()
 				requires = {{'haya14busa/vim-asterisk'}}
     }
 		use {'kevinhwang91/rnvimr', config = conf('rnvimr'), opt = false} -- Ranger explorer
+    use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+
 
     -- Testing
     use "vim-test/vim-test"

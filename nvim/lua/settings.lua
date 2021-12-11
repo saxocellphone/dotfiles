@@ -54,3 +54,4 @@ bo.autoindent = true
 cmd 'colorscheme onedark'
 cmd "let g:NERDDefaultAlign = 'left'"
 cmd "let g:tmux_navigator_no_mappings = 1"
+vim.g["mkdp_auto_close"] = 0

@@ -159,6 +159,11 @@ nvim_lsp.pyright.setup({
 nvim_lsp.ccls.setup {
 	on_attach = on_attach
 }
+
+nvim_lsp.elixirls.setup{
+  cmd = {"/home/vnazzaro/.my_elixir/language_server.sh"}
+}
+
 -- Below are for Lua lsp
 --local runtime_path = vim.split(package.path, ';')
 --table.insert(runtime_path, "lua/?.lua")
