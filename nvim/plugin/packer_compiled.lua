@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -73,6 +73,31 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/barbar.nvim",
     url = "https://github.com/romgrk/barbar.nvim"
+  },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -107,22 +132,51 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/glepnir/lspsaga.nvim"
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    commands = { "MarkdownPreview" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  ["marks.nvim"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/marks.nvim",
+    url = "https://github.com/chentau/marks.nvim"
   },
   nerdcommenter = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/scrooloose/nerdcommenter"
   },
-  ["nvim-compe"] = {
+  ["nvim-bqf"] = {
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/opt/nvim-bqf",
+    url = "https://github.com/kevinhwang91/nvim-bqf"
+  },
+  ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/nvim-compe",
-    url = "https://github.com/hrsh7th/nvim-compe"
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-cursorline"] = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/nvim-cursorline",
     url = "https://github.com/yamatsum/nvim-cursorline"
+  },
+  ["nvim-hlslens"] = {
+    config = { "require('plugconfigs.config').hlslens()" },
+    keys = { { "", "n" }, { "", "N" }, { "", "/" }, { "", "?" }, { "", "*" }, { "", "#" }, { "", "g*" }, { "", "g#" } },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/opt/nvim-hlslens",
+    url = "https://github.com/kevinhwang91/nvim-hlslens"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -179,15 +233,16 @@ _G.packer_plugins = {
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  sniprun = {
+  rnvimr = {
+    config = { "require('plugconfigs.config').rnvimr()" },
     loaded = true,
-    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/sniprun",
-    url = "https://github.com/michaelb/sniprun"
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/rnvimr",
+    url = "https://github.com/kevinhwang91/rnvimr"
   },
-  ["sql.nvim"] = {
+  ["sqlite.lua"] = {
     loaded = true,
-    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/sql.nvim",
-    url = "https://github.com/tami5/sql.nvim"
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/sqlite.lua",
+    url = "https://github.com/tami5/sqlite.lua"
   },
   ["telescope-frecency.nvim"] = {
     loaded = true,
@@ -204,6 +259,11 @@ _G.packer_plugins = {
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-asterisk"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/vim-asterisk",
+    url = "https://github.com/haya14busa/vim-asterisk"
+  },
   ["vim-bufkill"] = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/vim-bufkill",
@@ -213,6 +273,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/vim-coverage",
     url = "https://github.com/google/vim-coverage"
+  },
+  ["vim-doge"] = {
+    loaded = true,
+    path = "/Users/vnazzaro/.local/share/nvim/site/pack/packer/start/vim-doge",
+    url = "https://github.com/kkoomen/vim-doge"
   },
   ["vim-maktaba"] = {
     loaded = true,
@@ -252,6 +317,35 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: rnvimr
+time([[Config for rnvimr]], true)
+require('plugconfigs.config').rnvimr()
+time([[Config for rnvimr]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+time([[Defining lazy-load commands]], false)
+
+-- Keymap lazy-loads
+time([[Defining lazy-load keymaps]], true)
+vim.cmd [[noremap <silent> n <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "n", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> g# <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "g#", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> # <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "#", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> ? <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "?", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> g* <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "g*", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> / <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "/", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> * <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "*", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> N <cmd>lua require("packer.load")({'nvim-hlslens'}, { keys = "N", prefix = "" }, _G.packer_plugins)<cr>]]
+time([[Defining lazy-load keymaps]], false)
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType qf ++once lua require("packer.load")({'nvim-bqf'}, { ft = "qf" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

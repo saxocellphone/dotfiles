@@ -28,7 +28,7 @@ o.termguicolors = true
 o.syntax = [[on]]
 o.lazyredraw = true
 if globals.is_mac then
-    o.shell='/usr/local/bin/fish'
+    o.shell='/usr/local/bin/fish -l'
 end
 --o.expandtab = true
 
@@ -55,3 +55,4 @@ cmd 'colorscheme onedark'
 cmd "let g:NERDDefaultAlign = 'left'"
 cmd "let g:tmux_navigator_no_mappings = 1"
 vim.g["mkdp_auto_close"] = 0
+vim.g["python3_host_prog"] = "Users/vnazzaro/.pyenv/versions/neovim3/bin/python"

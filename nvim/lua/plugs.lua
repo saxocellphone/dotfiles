@@ -45,6 +45,7 @@ return require("packer").startup(function()
     }
 		use {'kevinhwang91/rnvimr', config = conf('rnvimr'), opt = false} -- Ranger explorer
     use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+		use {'kkoomen/vim-doge', run="call doge#install()"}
 
 
     -- Testing
