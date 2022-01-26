@@ -97,6 +97,8 @@ element {
 element-icon {
     size:                           64px;
     border:                         0px;
+    padding: 0px 0px 0px 35px;
+    background-color: @bg;
 }
 
 element-text {
@@ -104,12 +106,23 @@ element-text {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
+    background-color: @bg;
+    text-color: @fg;
 }
 
 element selected {
     background-color:               @se;
     text-color:                     @fg;
-	border:							0% 0% 0% 0%;
+    border:			    0% 0% 0% 0%;
     border-radius:                  12px;
-    border-color:                  	@bg;
+    border-color:                   @bg;
+}
+
+element-text selected{
+    background-color: @al;
+    text-color: @fg;
+}
+
+element-icon selected {
+    background-color:               @se;
 }
