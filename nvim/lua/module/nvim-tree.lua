@@ -3,7 +3,6 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  auto_close          = true,
   open_on_tab         = false,
   update_to_buf_dir   = {
     enable = true,
@@ -54,3 +53,8 @@ vim.api.nvim_set_keymap('n', '<leader>F', ':NvimTreeFindFile<cr>', {
 	noremap = true,
 	silent = true
 })
+
+vim.api.nvim_exec([[
+	autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+	]], true)
+
