@@ -1,3 +1,3 @@
-[submodule "NvChad"]
-	path = NvChad
+[submodule "nvchad"]
+	path = nvchad
 	url = git@github.com:saxocellphone/NvChad.git
